@@ -7,4 +7,12 @@ page-login {
         background-position: center;
         /* background by SVGBackgrounds.com */
     }
+
+    .login {
+        background: rgba(255, 255, 255, 0.5);
+
+        .login-item {
+            background: transparent;
+        }
+    }
 }

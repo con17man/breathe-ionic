@@ -1,5 +1,98 @@
-<ion-content padding>
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title text-center>Smart Home</ion-title>
+    </ion-navbar>
+</ion-header>
 
-    <button ion-button outline color="dark" (click)="login()">Log me in</button>
+<ion-content padding no-bounce>
+
+    <!-- LOGIN FORM -->
+    <ion-grid class="login" *ngIf="!showRegisterForm">
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Email</ion-label>
+                    <ion-input detail-none no-border type="email"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Password</ion-label>
+                    <ion-input detail-none no-border type="password"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button outline color="dark" (tap)="login()">Log me in</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button clear color="dark" (tap)="showRegisterForm = !showRegisterForm">New user? Register here.</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- !LOGIN FORM -->
+
+    <!-- REGISTER FORM -->
+    <ion-grid class="login" *ngIf="showRegisterForm">
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>First name</ion-label>
+                    <ion-input detail-none no-border type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Last name</ion-label>
+                    <ion-input detail-none no-border type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Email</ion-label>
+                    <ion-input detail-none no-border type="email"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Username</ion-label>
+                    <ion-input detail-none no-border type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item class="login-item">
+                    <ion-label fixed>Password</ion-label>
+                    <ion-input detail-none no-border type="password"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button outline color="dark" (tap)="register()">Register</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button clear color="dark" (tap)="showRegisterForm = !showRegisterForm">Take me to login.</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- !REGISTER FORM -->
 
 </ion-content>

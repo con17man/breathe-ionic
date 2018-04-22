@@ -1,6 +1,12 @@
 {
-  "name": "smartHome",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {}
+    "name": "smartHome",
+    "app_id": "",
+    "type": "ionic-angular",
+    "proxies": [
+        {
+            "path": "/",
+            "proxyUrl": "http://localhost:7777"
+        }
+    ],
+    "integrations": {}
 }
