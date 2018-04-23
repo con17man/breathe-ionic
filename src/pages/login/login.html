@@ -7,92 +7,96 @@
 <ion-content padding no-bounce>
 
     <!-- LOGIN FORM -->
-    <ion-grid class="login" *ngIf="!showRegisterForm">
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Email</ion-label>
-                    <ion-input detail-none no-border type="email"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+        <ion-grid class="login" *ngIf="!showRegisterForm">
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Username</ion-label>
+                        <ion-input detail-none no-border type="text" required name="username" [(ngModel)]="loginCredentials.username"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Password</ion-label>
-                    <ion-input detail-none no-border type="password"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Password</ion-label>
+                        <ion-input detail-none no-border type="password" required name="password" [(ngModel)]="loginCredentials.password"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <button ion-button outline color="dark" (tap)="login()">Log me in</button>
-            </ion-col>
-            <ion-col>
-                <button ion-button clear color="dark" (tap)="showRegisterForm = !showRegisterForm">New user? Register here.</button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button outline color="dark" type="submit" [disabled]="!loginForm.valid">Log me in</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button clear color="dark" (tap)="toggleLoginRegisterForm()">New user? Register here.</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
     <!-- !LOGIN FORM -->
 
     <!-- REGISTER FORM -->
-    <ion-grid class="login" *ngIf="showRegisterForm">
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>First name</ion-label>
-                    <ion-input detail-none no-border type="text"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+    <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+        <ion-grid class="login" *ngIf="showRegisterForm">
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>First name</ion-label>
+                        <ion-input detail-none no-border type="text" required name="firstName" [(ngModel)]="registerCredentials.firstName"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Last name</ion-label>
-                    <ion-input detail-none no-border type="text"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Last name</ion-label>
+                        <ion-input detail-none no-border type="text" required name="lastName" [(ngModel)]="registerCredentials.lastName"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Email</ion-label>
-                    <ion-input detail-none no-border type="email"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Email</ion-label>
+                        <ion-input detail-none no-border type="email" required name="email" [(ngModel)]="registerCredentials.email"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Username</ion-label>
-                    <ion-input detail-none no-border type="text"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Username</ion-label>
+                        <ion-input detail-none no-border type="text" required name="username" [(ngModel)]="registerCredentials.username"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <ion-item class="login-item">
-                    <ion-label fixed>Password</ion-label>
-                    <ion-input detail-none no-border type="password"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item class="login-item">
+                        <ion-label fixed>Password</ion-label>
+                        <ion-input detail-none no-border type="password" required name="password" [(ngModel)]="registerCredentials.password"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-row>
-            <ion-col>
-                <button ion-button outline color="dark" (tap)="register()">Register</button>
-            </ion-col>
-            <ion-col>
-                <button ion-button clear color="dark" (tap)="showRegisterForm = !showRegisterForm">Take me to login.</button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button outline color="dark" type="submit" [disabled]="!registerForm.valid">Register</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button clear color="dark" (tap)="toggleLoginRegisterForm()">Take me to login.</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
     <!-- !REGISTER FORM -->
 
 </ion-content>
