@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, LoadingController, ToastController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { UtilsService } from '../../providers/utils-service/utils-service';
 
@@ -99,14 +98,19 @@ export class AuthPage {
                 return this.authService.registerUser(this.registerCredentials).toPromise();
             })
             .then(data => {
-                loading.dismiss();
-                this.toggleLoginRegisterForm();
-                this.utils.showSimpleToast(`You've registered successfully`);
+                if(data.errorMsg) {
+                    this.utils.showSimpleToast(data.errorMsg);
+                } else {
+                    this.toggleLoginRegisterForm();
+                    this.utils.showSimpleToast(`You've registered successfully`);
+                }
             })
             .catch(err => {
                 console.warn('register', err);
-                loading.dismiss();
             })
+            .then(() => {
+                loading.dismiss();
+            });
     }
 
 }
