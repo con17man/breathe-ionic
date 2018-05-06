@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, LoadingController, ToastController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { AuthService } from '../../providers/login-service/login-service';
+import { AuthService } from '../../providers/auth-service/auth-service';
+import { UtilsService } from '../../providers/utils-service/utils-service';
 
 @IonicPage()
 @Component({
-    selector: 'page-login',
-    templateUrl: 'login.html',
+    selector: 'page-auth',
+    templateUrl: 'auth.html',
 })
-export class LoginPage {
+export class AuthPage {
 
     showRegisterForm: boolean;
 
@@ -31,7 +32,8 @@ export class LoginPage {
         private appCtrl: App,
         private loading: LoadingController,
         private toastCtrl: ToastController,
-        private authService: AuthService
+        private authService: AuthService,
+        private utils: UtilsService
     ) {
         this.showRegisterForm = false;
     }
@@ -63,36 +65,23 @@ export class LoginPage {
             })
             .then(data => {
                 console.log('>>>>>>>>>', data);
-                loading.dismiss();
-                // if the email is not found in the DB
-                if(data === null) {
-                    let toast = this.toastCtrl.create({
-                        message: `This user is not registered`,
-                        duration: 5000,
-                        showCloseButton: true,
-                        closeButtonText: `Register`
-                    });
 
-                    toast.onDidDismiss((data, role) => {
-                        if (role === 'close') {
-                            this.showRegisterForm = true;
-                        }
-                    });
-
-                    toast.present();
+                if(data.errorMsg) {
+                    this.utils.showSimpleToast(data.errorMsg);
                 } else {
-                    this.appCtrl.navPop()
+                    this.utils.showSimpleToast(`Hi ${data.firstName}! Welcome back!`);
+
+                    this.appCtrl.navPop();
                     this.navCtrl.setRoot('HomePage');
                 }
 
             })
             .catch(error => {
-                loading.dismiss();
+                this.utils.showSimpleToast(`The server is not responding. Try again later.`);
                 console.warn('login', error);
-                let toast = this.toastCtrl.create({
-                    message: `The server is not responding. Try again later.`,
-                    duration: 5000
-                }).present();
+            })
+            .then(() => {
+                loading.dismiss();
             });
     }
 
@@ -112,10 +101,7 @@ export class LoginPage {
             .then(data => {
                 loading.dismiss();
                 this.toggleLoginRegisterForm();
-                let toast = this.toastCtrl.create({
-                    message: `You've registered successfully`,
-                    duration: 5000
-                }).present();
+                this.utils.showSimpleToast(`You've registered successfully`);
             })
             .catch(err => {
                 console.warn('register', err);
