@@ -1,0 +1,48 @@
+page-dashboard {
+
+    .scroll-content {
+        background-color: map-get($colors, light);
+    }
+
+    .no-data {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em;
+        width: 80%;
+
+        .no-data-msg {
+            color: map-get($colors, red);
+            text-align: center;
+        }
+    }
+
+    .sensor-card {
+
+        ion-card {
+            position: relative;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(to right,#EF476F, #FFD166);
+        }
+
+        // gradients
+        .gradient-1 { background: linear-gradient( to right, map-get($colors,red), map-get($colors,yellow) ); }
+        .gradient-2 { background: linear-gradient( to right, map-get($colors,yellow), map-get($colors,green) ); }
+        .gradient-3 { background: linear-gradient( to right, map-get($colors,green), map-get($colors,blue) ); }
+        .gradient-4 { background: linear-gradient( to right, map-get($colors,blue), map-get($colors,darkBlue) ); }
+        .gradient-5 { background: linear-gradient( to right, map-get($colors,darkBlue), map-get($colors,dark) ); }
+
+        .card-title {
+            margin-top: 1em;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .card-subtitle {
+            font-size: 1.25em;
+            margin-bottom: 1em;
+        }
+    }
+
+}

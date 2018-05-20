@@ -11,17 +11,13 @@ export class UtilsService {
 
     showSimpleToast(message: string, duration?: number) {
 
-        if (!duration) {
-            duration = 5000;
-        }
+        duration = (!duration) ? 5000 : duration;
 
         let toast = this.toastCtrl.create({
             message: message,
             duration: duration,
-            showCloseButton: true
-        });
-
-        toast.present();
+            // showCloseButton: true
+        }).present();
     }
 
 }

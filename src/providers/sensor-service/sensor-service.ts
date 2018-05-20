@@ -4,33 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import { API } from '../../constants/endpoints';
 
 @Injectable()
-export class AuthService {
+export class SensorService {
 
     constructor(
         public http: HttpClient
     ) { }
 
-
-    public loginUser(user): Observable<any> {
-
-        return Observable.create(observer => {
-            this.http.post(API.login, user)
-                .subscribe(response => {
-                    observer.next(response);
-                    observer.complete();
-                }, error => {
-                    observer.error(error);
-                });
-        });
-
-    }
-
-
-
-    public registerUser(user): Observable<any> {
+    public getLastMeasurements(): Observable<any> {
 
         return Observable.create(observer => {
-            this.http.post(API.register, user)
+            this.http.get(API.sensor_last)
                 .subscribe(response => {
                     observer.next(response);
                     observer.complete();

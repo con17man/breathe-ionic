@@ -1,13 +1,8 @@
-<ion-header>
-    <ion-navbar color="dark">
-        <ion-title text-center>Smart Home</ion-title>
-    </ion-navbar>
-</ion-header>
 
 <ion-content padding no-bounce>
 
     <!-- LOGIN FORM -->
-    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3>
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3 padding-top>
         <ion-grid class="login" *ngIf="!showRegisterForm">
             <ion-row>
                 <ion-col>
@@ -40,7 +35,7 @@
     <!-- !LOGIN FORM -->
 
     <!-- REGISTER FORM -->
-    <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+    <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off" ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3>
         <ion-grid class="login" *ngIf="showRegisterForm">
             <ion-row>
                 <ion-col>

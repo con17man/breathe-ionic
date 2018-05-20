@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, LoadingController, ToastController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { UtilsService } from '../../providers/utils-service/utils-service';
+import { UserService } from '../../providers/user-service/user-service';
 
 @IonicPage()
 @Component({
@@ -32,7 +33,8 @@ export class AuthPage {
         private loading: LoadingController,
         private toastCtrl: ToastController,
         private authService: AuthService,
-        private utils: UtilsService
+        private utils: UtilsService,
+        private userService: UserService
     ) {
         this.showRegisterForm = false;
     }
@@ -69,9 +71,11 @@ export class AuthPage {
                     this.utils.showSimpleToast(data.errorMsg);
                 } else {
                     this.utils.showSimpleToast(`Hi ${data.firstName}! Welcome back!`);
-
+                    // save user data
+                    this.userService.setUser(data);
+                    // redirect to dashboard
                     this.appCtrl.navPop();
-                    this.navCtrl.setRoot('HomePage');
+                    this.navCtrl.setRoot('DashboardPage');
                 }
 
             })
