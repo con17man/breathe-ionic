@@ -1,5 +1,5 @@
 import { Directive, HostListener } from '@angular/core';
-import { ActionSheetController, NavController } from 'ionic-angular';
+import { ActionSheetController, NavController, App } from 'ionic-angular';
 
 @Directive({
     selector: '[settings-options]', // Attribute selector
@@ -11,19 +11,26 @@ export class SettingsOptionsDirective {
 
     constructor(
         public actionSheetCtrl: ActionSheetController,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private appCtrl: App
     ) {}
 
     openSettings() {
 
         this.actionSheetCtrl.create({
-            title: 'Settings',
             buttons: [
                 {
-                    text: 'My Profile',
-                    icon: 'ios-contact',
+                    text: 'Dashboard',
+                    icon: 'ios-analytics-outline',
                     handler: () => {
-                        this.navCtrl.push('ProfilePage');
+                        this.navigateToPage('DashboardPage');
+                    }
+                },
+                {
+                    text: 'My Profile',
+                    icon: 'ios-contact-outline',
+                    handler: () => {
+                        this.navigateToPage('ProfilePage');
                     }
                 },
                 {
@@ -36,6 +43,28 @@ export class SettingsOptionsDirective {
             ]
         }).present();
 
+    }
+
+
+
+    /**
+     * @desc navigate to a given page
+     * check if already on that page
+     * if going to dashboardPage set it as rootPage (disable going)
+     * @memberof SettingsOptionsDirective
+     */
+    navigateToPage(pageName: string) {
+        let currentPageName = this.appCtrl.getActiveNav().getActive().name;
+
+        if (currentPageName !== pageName) {
+
+            if (pageName === 'DashboardPage') {
+                this.appCtrl.getRootNav().setRoot('DashboardPage');
+                return;
+            }
+
+            this.navCtrl.push(pageName);
+        }
     }
 
 }
