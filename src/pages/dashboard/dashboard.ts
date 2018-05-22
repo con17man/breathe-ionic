@@ -19,8 +19,11 @@ export class DashboardPage {
         private loading: LoadingController,
         private sensorService: SensorService
     ) {
+
+        // INIT objects/local variables
         this.noMeasurements = false;
         this.sensorMeasurements = {};
+        // INIT -- END
 
         this.getLastMeasurements();
 
@@ -31,25 +34,38 @@ export class DashboardPage {
 
     ionViewDidLoad() { }
 
+    // when the user leaves the page, stop fetching data from server
     ionViewDidLeave() {
         clearInterval(this.interval);
     }
 
 
-    getLastMeasurements() {
 
+    /**
+     * @desc fetch the last measurements registered in the DB by rPi board
+     * if there's no data hide the dashboard and show 'no-data-message'
+     * @memberof DashboardPage
+     */
+    getLastMeasurements() {
         this.sensorService.getLastMeasurements().toPromise()
             .then(data => {
-                if (data) {
-                    this.sensorMeasurements = data;
-                    this.noMeasurements = false;
-                } else {
-                    this.noMeasurements = true;
-                }
+                this.sensorMeasurements = data;
+                this.noMeasurements = (data) ? false : true;
             })
             .catch(err => {
                 console.warn(err);
             });
+    }
+
+
+
+    /**
+     * @desc navigate to a given page
+     * @param {string} pageName
+     * @memberof DashboardPage
+     */
+    goToPage(pageName: string) {
+        this.navCtrl.push(pageName);
     }
 
 }

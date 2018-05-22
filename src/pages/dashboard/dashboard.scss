@@ -1,8 +1,8 @@
 page-dashboard {
 
-    .scroll-content {
-        background-color: map-get($colors, light);
-    }
+    // .scroll-content {
+    //     background-color: map-get($colors, light);
+    // }
 
     .no-data {
         position: absolute;
@@ -22,9 +22,16 @@ page-dashboard {
 
         ion-card {
             position: relative;
-            text-align: center;
-            color: #fff;
-            background: linear-gradient(to right,#EF476F, #FFD166);
+            padding: 1em;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            text-shadow: 1px 1px map-get($colors, shadowText);
+            color: map-get($colors, light);
+            background: linear-gradient( to right, map-get($colors,red), map-get($colors,yellow) );
         }
 
         // gradients
@@ -32,16 +39,15 @@ page-dashboard {
         .gradient-2 { background: linear-gradient( to right, map-get($colors,yellow), map-get($colors,green) ); }
         .gradient-3 { background: linear-gradient( to right, map-get($colors,green), map-get($colors,blue) ); }
         .gradient-4 { background: linear-gradient( to right, map-get($colors,blue), map-get($colors,darkBlue) ); }
-        .gradient-5 { background: linear-gradient( to right, map-get($colors,darkBlue), map-get($colors,dark) ); }
+        .gradient-5 { background: linear-gradient( to right, map-get($colors,darkBlue), map-get($colors,blue) ); }
+        .gradient-6 { background: linear-gradient( to right, map-get($colors,blue), map-get($colors,green) ); }
 
-        .card-title {
-            margin-top: 1em;
-            font-size: 2em;
-            font-weight: bold;
+        .sensor-name {
+            font-weight: 400;
         }
-        .card-subtitle {
-            font-size: 1.25em;
-            margin-bottom: 1em;
+
+        .sensor-value {
+            font-weight: 900;
         }
     }
 

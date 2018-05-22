@@ -44,7 +44,9 @@ $colors: (
   yellow:   #FFD166,
   green:    #06D6A0,
   blue:     #118AB2,
-  darkBlue: #073B4C
+  darkBlue: #073B4C,
+
+  shadowText:    rgba(0, 0, 0, 0.3)
 );
 
 // Custom colors
@@ -95,3 +97,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+.logout-btn {
+    color: map-get($colors, red) !important;
+}
