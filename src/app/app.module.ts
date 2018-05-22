@@ -13,6 +13,7 @@ import { UtilsService } from '../providers/utils-service/utils-service';
 import { UserService } from '../providers/user-service/user-service';
 import { StorageService } from '../providers/storage-service/storage-service';
 import { SensorService } from '../providers/sensor-service/sensor-service';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,11 @@ import { SensorService } from '../providers/sensor-service/sensor-service';
     imports: [
         BrowserModule,
         HttpClientModule,
-        IonicModule.forRoot(MyApp),
+        DirectivesModule,
+        IonicModule.forRoot(MyApp, {
+            mode: 'ios',
+            iconMode: 'ios'
+        }),
         IonicStorageModule.forRoot({
             name: 'smartHome__DB',
                driverOrder: ['indexeddb', 'sqlite', 'websql']
