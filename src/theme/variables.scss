@@ -93,6 +93,11 @@ $colors: (
 
 
 // Fonts
+@import "_fonts.scss";
+// Change the default font
+$font-family-base: "Lato-Regular";
+$font-family-ios-base: $font-family-base;
+$font-family-md-base: $font-family-base;
 // --------------------------------------------------
 
 @import "roboto";
