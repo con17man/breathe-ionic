@@ -12,6 +12,7 @@ import { SensorService } from '../../providers/sensor-service/sensor-service';
 export class SensorPage {
 
     lastSensor: any;
+    lastRecord: any;
     sensorType: string;
     noSensorData: boolean;
 
@@ -24,6 +25,7 @@ export class SensorPage {
         private loadingCtrl: LoadingController,
         private appCtrl: App
     ) {
+        this.lastRecord = {};
         this.noSensorData = false;
         this.sensorType = this.navParams.get('sensorType');
 
@@ -50,6 +52,7 @@ export class SensorPage {
             })
             .then(result => {
                 if (result.lastRecord) {
+                    this.lastRecord = result.lastRecord;
                     this.noSensorData = false;
                     this.sensorService.renderSensorChart(result, this.sensorType, this.lineChart.nativeElement);
                 } else {
