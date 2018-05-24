@@ -1,23 +1,5 @@
 page-dashboard {
 
-    // .scroll-content {
-    //     background-color: map-get($colors, light);
-    // }
-
-    .no-data {
-        position: absolute;
-        top: 45%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 1em;
-        width: 80%;
-
-        .no-data-msg {
-            color: map-get($colors, red);
-            text-align: center;
-        }
-    }
-
     .sensor-card {
 
         ion-card {

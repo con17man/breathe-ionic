@@ -12,5 +12,22 @@
 
 <ion-content no-bounce>
 
-    <canvas #temperatureCanvas></canvas>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div *ngIf="!noSensorData">
+        <canvas #sensorCanvas></canvas>
+    </div>
+
+    <div *ngIf="noSensorData" class="no-data">
+        <div class="no-data-msg">
+            <button ion-button icon-only large clear disabled>
+                <ion-icon name="ios-analytics-outline" color="red"></ion-icon>
+            </button>
+            <h3>Looks like the RaspberryPi hasn't sent any data in a long time.</h3>
+            <button ion-button outline block color="red" (tap)="renderSensorContent()">Try Again</button>
+        </div>
+    </div>
+
 </ion-content>

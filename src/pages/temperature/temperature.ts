@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Chart } from 'chart.js';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { SensorService } from '../../providers/sensor-service/sensor-service';
 
 @IonicPage()
 @Component({
@@ -9,37 +9,56 @@ import { Chart } from 'chart.js';
 })
 export class TemperaturePage {
 
-    temperatureChart: any;
+    lastSensor: any;
+    sensorType: string;
+    noSensorData: boolean;
 
-    @ViewChild('temperatureCanvas') lineChart;
+    @ViewChild('sensorCanvas') lineChart;
 
     constructor(
         public navCtrl: NavController,
-        public navParams: NavParams
-    ) { }
+        public navParams: NavParams,
+        private sensorService: SensorService,
+        private loadingCtrl: LoadingController
+    ) {
+        this.noSensorData = false;
+        this.sensorType = this.navParams.get('sensorType');
 
-    ionViewDidLoad() {
-        this.loadTemperatureChart();
+        this.renderSensorContent();
+    }
+
+    ionViewDidLoad() {}
+
+
+    doRefresh(refresher) {
+        this.renderSensorContent();
+        refresher.complete();
     }
 
 
-    loadTemperatureChart() {
-        this.temperatureChart = new Chart(this.lineChart.nativeElement, {
-            type: 'line',
-            data: {
-                labels: ['a', 'b', 'c'],
-                datasets: [
-                    {
-                        label: 'Temperature',
-                        data: [1, 5, 2],
-                        backgroundColor: "rgba(105, 184, 214, 0.3)",
-                        borderColor: "#69B8D6",
-                        pointBorderColor: "#69B8D6",
-                        pointHoverBackgroundColor: "#69B8D6"
-                    }
-                ]
-            }
-        })
+    renderSensorContent() {
+        let loading = this.loadingCtrl.create({
+            content: `Fetching sensor data...`
+        });
+
+        loading.present()
+            .then(() => {
+                return this.sensorService.getSensorTypeMeasurements(this.sensorType).toPromise();
+            })
+            .then(result => {
+                if (result.lastRecord) {
+                    this.noSensorData = false;
+                    this.sensorService.renderSensorChart(result, this.sensorType, this.lineChart.nativeElement);
+                } else {
+                    this.noSensorData = true;
+                }
+            })
+            .catch(err => {
+                console.log('error', err);
+            })
+            .then(() => {
+                loading.dismiss();
+            });
     }
 
 }

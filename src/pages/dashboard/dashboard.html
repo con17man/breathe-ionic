@@ -17,7 +17,7 @@
 <ion-content no-bounce>
 
     <div *ngIf="!noMeasurements" class="sensor-card" ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3>
-        <ion-card class="gradient-1" (tap)="goToPage('TemperaturePage')">
+        <ion-card class="gradient-1" (tap)="goToPage('temperature')">
             <div class="sensor-name">
                 <ion-icon ios="ios-thermometer" md="ios-thermometer"></ion-icon>
                 Temperature
@@ -25,7 +25,7 @@
             <div class="sensor-value">{{sensorMeasurements.temperature}} °C</div>
         </ion-card>
 
-        <ion-card class="gradient-2">
+        <ion-card class="gradient-2" (tap)="goToPage('humidity')">
             <div class="sensor-name">
                 <ion-icon ios="ios-water" md="ios-water"></ion-icon>
                 Humidity
@@ -33,10 +33,10 @@
             <div class="sensor-value">{{sensorMeasurements.humidity}} %</div>
         </ion-card>
 
-        <ion-card class="gradient-3">
+        <ion-card class="gradient-3" (tap)="goToPage('presure')">
             <div class="sensor-name">
                 <ion-icon ios="ios-analytics" md="ios-analytics"></ion-icon>
-                Presure
+                Pressure
             </div>
             <div class="sensor-value">{{sensorMeasurements.presure}} Pa</div>
         </ion-card>

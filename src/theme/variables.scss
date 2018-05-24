@@ -107,3 +107,18 @@ $font-family-md-base: $font-family-base;
 .logout-btn {
     color: map-get($colors, red) !important;
 }
+
+
+.no-data {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    width: 80%;
+
+    .no-data-msg {
+        color: map-get($colors, red);
+        text-align: center;
+    }
+}
