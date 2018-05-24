@@ -49,12 +49,24 @@ export class DashboardPage {
     getLastMeasurements() {
         this.sensorService.getLastMeasurements().toPromise()
             .then(data => {
-                this.sensorMeasurements = data;
                 this.noMeasurements = (data) ? false : true;
+
+                if (data) {
+                    this.sensorMeasurements = data;
+                } else {
+                    clearInterval(this.interval);
+                }
             })
             .catch(err => {
                 console.warn(err);
             });
+    }
+
+
+
+    doRefresh(refresher) {
+        this.getLastMeasurements();
+        refresher.complete();
     }
 
 
