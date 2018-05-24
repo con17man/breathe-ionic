@@ -75,7 +75,10 @@ export class SensorService {
                 scales: {
                     xAxes: [{
                         type: 'time',
-                        distribution: 'series'
+                        distribution: 'series',
+                        time: {
+                            tooltipFormat: 'HH:mm'
+                        }
                     }],
                     yAxes: [{
                         ticks: {

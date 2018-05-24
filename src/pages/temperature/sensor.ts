@@ -6,10 +6,10 @@ import { SensorService } from '../../providers/sensor-service/sensor-service';
     segment: 'sensor/:sensorType'
 })
 @Component({
-    selector: 'page-temperature',
-    templateUrl: 'temperature.html',
+    selector: 'page-sensor',
+    templateUrl: 'sensor.html',
 })
-export class TemperaturePage {
+export class SensorPage {
 
     lastSensor: any;
     sensorType: string;

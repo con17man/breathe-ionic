@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TemperaturePage } from './temperature';
+import { SensorPage } from './sensor';
 import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   declarations: [
-    TemperaturePage,
+    SensorPage,
   ],
   imports: [
-    IonicPageModule.forChild(TemperaturePage),
+    IonicPageModule.forChild(SensorPage),
     DirectivesModule
   ],
 })
-export class TemperaturePageModule {}
+export class SensorPageModule {}

@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="dark">
-        <ion-title text-center>My Profile</ion-title>
+        <ion-title text-center>{{sensorType}}</ion-title>
         <ion-buttons right>
             <button settings-options ion-button icon-only>
                 <ion-icon ios="ios-settings" md="ios-settings"></ion-icon>
@@ -30,14 +30,16 @@
             <button ion-button icon-only large clear disabled>
                 <ion-icon name="ios-analytics-outline" color="red"></ion-icon>
             </button>
-            <h3>Looks like the RaspberryPi hasn't sent any data in a long time.</h3>
-            <h3>Pull down to refresh the page.</h3>
+            <h5>Looks like the RaspberryPi hasn't sent any data for the last 2 hours.</h5>
+            <h5>Pull down to refresh the page</h5>
 
             <button ion-button outline block
                 ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3
                 color="red" (tap)="goToDashboard()">
                 Go to Dashboard
             </button>
+
+            <h5>Also make sure that RaspberryPi is turned on.</h5>
         </div>
     </div>
 
