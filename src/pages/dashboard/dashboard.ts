@@ -66,7 +66,7 @@ export class DashboardPage {
      */
     goToPage(sensorType: string) {
         this.navCtrl.push('TemperaturePage', {
-            sensorType: sensorType
+            'sensorType': sensorType
         });
     }
 

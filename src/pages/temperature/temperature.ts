@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, App } from 'ionic-angular';
 import { SensorService } from '../../providers/sensor-service/sensor-service';
 
-@IonicPage()
+@IonicPage({
+    segment: 'sensor/:sensorType'
+})
 @Component({
     selector: 'page-temperature',
     templateUrl: 'temperature.html',
@@ -19,7 +21,8 @@ export class TemperaturePage {
         public navCtrl: NavController,
         public navParams: NavParams,
         private sensorService: SensorService,
-        private loadingCtrl: LoadingController
+        private loadingCtrl: LoadingController,
+        private appCtrl: App
     ) {
         this.noSensorData = false;
         this.sensorType = this.navParams.get('sensorType');
@@ -59,6 +62,11 @@ export class TemperaturePage {
             .then(() => {
                 loading.dismiss();
             });
+    }
+
+
+    goToDashboard() {
+        this.appCtrl.getRootNav().setRoot('DashboardPage');
     }
 
 }
