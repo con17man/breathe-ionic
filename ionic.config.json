@@ -5,7 +5,7 @@
   "proxies": [
     {
       "path": "/",
-      "proxyUrl": "http://localhost:7777/"
+      "proxyUrl": "https://pi-sensors.herokuapp.com/"
     }
   ],
   "integrations": {

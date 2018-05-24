@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1008308339384",
+    "firebase_url": "https://breathe-78227.firebaseio.com",
+    "project_id": "breathe-78227",
+    "storage_bucket": "breathe-78227.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008308339384:android:77001d4f18c3713a",
+        "android_client_info": {
+          "package_name": "io.ionic.breathe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008308339384-0s0p3s11j693p55lhes1i174nh670air.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1008308339384-0s0p3s11j693p55lhes1i174nh670air.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLblNn8eICQdjKXlRfyrWi-iWI25jGphQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
