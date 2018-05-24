@@ -14,6 +14,7 @@ export class SensorPage {
     lastSensor: any;
     lastRecord: any;
     sensorType: string;
+    sensorUnit: string;
     noSensorData: boolean;
 
     @ViewChild('sensorCanvas') lineChart;
@@ -59,6 +60,9 @@ export class SensorPage {
                     this.noSensorData = true;
                 }
             })
+            .then(() => {
+                this.setSensorUnit(this.sensorType);
+            })
             .catch(err => {
                 console.log('error', err);
             })
@@ -70,6 +74,24 @@ export class SensorPage {
 
     goToDashboard() {
         this.appCtrl.getRootNav().setRoot('DashboardPage');
+    }
+
+
+    setSensorUnit(sensorType) {
+        switch (sensorType) {
+            case 'temperature':
+                this.sensorUnit = `°C`;
+                break;
+            case 'humidity':
+                this.sensorUnit = `%`;
+                break;
+            case 'presure':
+                this.sensorUnit = `Pa`;
+                break;
+            default:
+                this.sensorUnit = `--`;
+                break;
+        }
     }
 
 }
