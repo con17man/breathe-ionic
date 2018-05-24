@@ -1,5 +1,6 @@
 import { Directive, HostListener } from '@angular/core';
-import { ActionSheetController, NavController, App } from 'ionic-angular';
+import { ActionSheetController, NavController, App, AlertController } from 'ionic-angular';
+import { StorageService } from '../../providers/storage-service/storage-service';
 
 @Directive({
     selector: '[settings-options]', // Attribute selector
@@ -12,6 +13,8 @@ export class SettingsOptionsDirective {
     constructor(
         public actionSheetCtrl: ActionSheetController,
         private navCtrl: NavController,
+        private alertCtrl: AlertController,
+        private storageService: StorageService,
         private appCtrl: App
     ) {}
 
@@ -35,10 +38,12 @@ export class SettingsOptionsDirective {
                 },
                 {
                     text: 'Log out',
-                    role: 'cancel',
+                    // role: 'cancel',
                     icon: 'ios-log-out',
                     cssClass: 'logout-btn',
-                    handler: () => {}
+                    handler: () => {
+                        this.confirmLogoutModal();
+                    }
                 }
             ]
         }).present();
@@ -65,6 +70,35 @@ export class SettingsOptionsDirective {
 
             this.navCtrl.push(pageName);
         }
+    }
+
+
+    confirmLogoutModal() {
+        this.alertCtrl.create({
+            title: `Logout`,
+            message: `You're about to log out. Are you sure?`,
+            buttons: [
+                {
+                    text: `Cancel`,
+                    role: `cancel`
+                },
+                {
+                    text: `Logout`,
+                    cssClass: 'logout-btn',
+                    handler: () => {
+                        this.logoutUser();
+                    }
+                }
+            ]
+        }).present();
+    }
+
+
+    logoutUser() {
+        this.storageService.remove('user')
+            .then(() => {
+                this.appCtrl.getRootNav().setRoot('AuthPage');
+            });
     }
 
 }
