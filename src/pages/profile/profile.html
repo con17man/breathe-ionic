@@ -10,8 +10,67 @@
 </ion-header>
 
 
-<ion-content no-bounce padding>
+<ion-content no-bounce>
 
-    <h1>Hi, {{user.firstName}}</h1>
+    <!-- <ion-card>
+        <ion-card-header>
+            Hey, {{user.firstName | titlecase}},
+        </ion-card-header>
+        <ion-card-content>
+            Here you can set notification limits for sensors. If the app
+            receives a sensor value over the limit, it will send you a
+            notification.
+        </ion-card-content>
+    </ion-card> -->
+
+    <div ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3>
+        <ion-list>
+
+            <ion-item no-lines>
+                <ion-avatar item-end>
+                    <img src="http://via.placeholder.com/150x150" alt="avatar">
+                </ion-avatar>
+                <h2>Hey, {{user.firstName | titlecase}},</h2>
+            </ion-item>
+
+            <ion-item no-lines text-wrap>
+                Here you can set notification limits for sensors. If the app
+                receives a sensor value over the limit, it will send you a
+                notification.
+            </ion-item>
+
+            <ion-list-header no-lines>Temperature settings</ion-list-header>
+            <ion-item no-lines>
+                <ion-label>Temperature Alert</ion-label>
+                <ion-toggle color="red"></ion-toggle>
+            </ion-item>
+            <ion-item no-lines>
+                <ion-range color="red" min="-20" max="60" pin="true" step="1">
+                    <ion-icon small range-left name="ios-thermometer" color="red"></ion-icon>
+                    <ion-icon range-right name="ios-thermometer" color="red"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+            <ion-list-header no-lines>Smoke Alert</ion-list-header>
+            <ion-item no-lines>
+                <ion-label>Smoke Alert</ion-label>
+                <ion-toggle color="green"></ion-toggle>
+            </ion-item>
+
+            <ion-list-header no-lines>Humidity settings</ion-list-header>
+            <ion-item no-lines>
+                <ion-label>Humidity Alert</ion-label>
+                <ion-toggle color="blue"></ion-toggle>
+            </ion-item>
+            <ion-item no-lines>
+                <ion-range color="blue" min="0" max="100" pin="true" step="5" snaps="true">
+                    <ion-icon small range-left name="ios-water" color="blue"></ion-icon>
+                    <ion-icon range-right name="ios-water" color="blue"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+        </ion-list>
+    </div>
+
 
 </ion-content>
