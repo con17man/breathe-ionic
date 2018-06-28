@@ -12,17 +12,6 @@
 
 <ion-content no-bounce>
 
-    <!-- <ion-card>
-        <ion-card-header>
-            Hey, {{user.firstName | titlecase}},
-        </ion-card-header>
-        <ion-card-content>
-            Here you can set notification limits for sensors. If the app
-            receives a sensor value over the limit, it will send you a
-            notification.
-        </ion-card-content>
-    </ion-card> -->
-
     <div ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-3 offset-lg-3 offset-xl-3>
         <ion-list>
 
@@ -42,10 +31,10 @@
             <ion-list-header no-lines>Temperature settings</ion-list-header>
             <ion-item no-lines>
                 <ion-label>Temperature Alert</ion-label>
-                <ion-toggle color="red"></ion-toggle>
+                <ion-toggle color="red" [(ngModel)]="limits.tmpNotif" (ionChange)="updateSensorLimits()"></ion-toggle>
             </ion-item>
             <ion-item no-lines>
-                <ion-range color="red" min="-20" max="60" pin="true" step="1">
+                <ion-range [(ngModel)]="limits.tmpVal" [disabled]="!limits.tmpNotif" (ionBlur)="updateSensorLimits()" color="red" min="-20" max="60" pin="true" step="1">
                     <ion-icon small range-left name="ios-thermometer" color="red"></ion-icon>
                     <ion-icon range-right name="ios-thermometer" color="red"></ion-icon>
                 </ion-range>
@@ -54,16 +43,16 @@
             <ion-list-header no-lines>Smoke Alert</ion-list-header>
             <ion-item no-lines>
                 <ion-label>Smoke Alert</ion-label>
-                <ion-toggle color="green"></ion-toggle>
+                <ion-toggle color="green" [(ngModel)]="limits.smkNotif" (ionChange)="updateSensorLimits()"></ion-toggle>
             </ion-item>
 
             <ion-list-header no-lines>Humidity settings</ion-list-header>
             <ion-item no-lines>
                 <ion-label>Humidity Alert</ion-label>
-                <ion-toggle color="blue"></ion-toggle>
+                <ion-toggle color="blue" [(ngModel)]="limits.hmdNotif" (ionChange)="updateSensorLimits()"></ion-toggle>
             </ion-item>
             <ion-item no-lines>
-                <ion-range color="blue" min="0" max="100" pin="true" step="5" snaps="true">
+                <ion-range [(ngModel)]="limits.hmdVal" [disabled]="!limits.hmdNotif" (ionBlur)="updateSensorLimits()" color="blue" min="0" max="100" pin="true" step="5" snaps="true">
                     <ion-icon small range-left name="ios-water" color="blue"></ion-icon>
                     <ion-icon range-right name="ios-water" color="blue"></ion-icon>
                 </ion-range>

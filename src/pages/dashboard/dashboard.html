@@ -47,7 +47,7 @@
                 <ion-icon ios="ios-analytics" md="ios-analytics"></ion-icon>
                 Pressure
             </div>
-            <div class="sensor-value">{{sensorMeasurements.presure}} Pa</div>
+            <div class="sensor-value">{{sensorMeasurements.presure | number : '1.2-3'}} Pa</div>
         </ion-card>
 
         <ion-card class="gradient-4">
@@ -55,7 +55,7 @@
                 <ion-icon ios="ios-cloud-outline" md="ios-cloud-outline"></ion-icon>
                 Smoke Lvl.
             </div>
-            <div class="sensor-value">{{sensorMeasurements.gas_smoke}}</div>
+            <div class="sensor-value">{{sensorMeasurements.gas_smoke | number : '1.2-5'}}</div>
         </ion-card>
 
         <ion-card class="gradient-5">
@@ -63,7 +63,7 @@
                 <ion-icon ios="ios-cloud" md="ios-cloud"></ion-icon>
                 CO<sub>2</sub> Lvl.
             </div>
-            <div class="sensor-value">{{sensorMeasurements.gas_CO}}</div>
+            <div class="sensor-value">{{sensorMeasurements.gas_CO | number : '1.2-5'}}</div>
         </ion-card>
 
         <ion-card class="gradient-6">
@@ -71,7 +71,7 @@
                 <ion-icon ios="ios-cloud-circle-outline" md="ios-cloud-circle-outline"></ion-icon>
                 LPG Lvl.
             </div>
-            <div class="sensor-value">{{sensorMeasurements.gas_LPG}}</div>
+            <div class="sensor-value">{{sensorMeasurements.gas_LPG | number : '1.2-5'}}</div>
         </ion-card>
     </div>
 

@@ -123,3 +123,14 @@ $font-family-md-base: $font-family-base;
         text-align: center;
     }
 }
+
+
+.alert-toast {
+    .toast-container {
+        background: map-get($colors, red);
+        border: 1px solid map-get($colors, red);
+        border-radius: 0.35em;
+        font-weight: bold;
+        font-size: 1.6rem !important;
+    }
+}

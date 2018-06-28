@@ -91,4 +91,35 @@ export class SensorService {
         })
     }
 
+
+
+    public getSensorLimits(): Observable<any> {
+
+        return Observable.create(observer => {
+            this.http.get(API.sensor_limits)
+                .subscribe(response => {
+                    observer.next(response);
+                    observer.complete();
+                }, error => {
+                    observer.error(error);
+                });
+        });
+
+    }
+
+
+    public updateSensorLimits(obj): Observable<any> {
+
+        return Observable.create(observer => {
+            this.http.post(API.sensor_limits, obj)
+                .subscribe(response => {
+                    observer.next(response);
+                    observer.complete();
+                }, error => {
+                    observer.error(error);
+                });
+        });
+
+    }
+
 }

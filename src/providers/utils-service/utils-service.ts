@@ -11,13 +11,27 @@ export class UtilsService {
 
     showSimpleToast(message: string, duration?: number) {
 
-        duration = (!duration) ? 5000 : duration;
+        duration = (!duration) ? 1500 : duration;
 
-        let toast = this.toastCtrl.create({
+        this.toastCtrl.create({
             message: message,
             duration: duration,
             // showCloseButton: true
         }).present();
+
+    }
+
+
+
+    showAlertToast(message: string) {
+
+        this.toastCtrl.create({
+            message: message,
+            cssClass: 'alert-toast',
+            showCloseButton: true,
+            dismissOnPageChange: true
+        }).present();
+
     }
 
 }
