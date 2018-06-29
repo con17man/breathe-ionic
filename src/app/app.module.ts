@@ -14,6 +14,8 @@ import { UserService } from '../providers/user-service/user-service';
 import { StorageService } from '../providers/storage-service/storage-service';
 import { SensorService } from '../providers/sensor-service/sensor-service';
 import { DirectivesModule } from '../directives/directives.module';
+// import { Push } from '@ionic-native/push';
+// import { PushNotificationsService } from '../providers/push-notifications-service/push-notifications-service';
 
 @NgModule({
     declarations: [
@@ -45,6 +47,8 @@ import { DirectivesModule } from '../directives/directives.module';
         UserService,
         StorageService,
         SensorService,
+        // Push,
+        // PushNotificationsService,
     ]
 })
 export class AppModule { }
